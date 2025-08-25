@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hands_sum</title>
+  <title>Hands_sum 쇼핑몰</title>
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
@@ -22,6 +22,9 @@
     main {
       padding: 50px 20px;
     }
+    h2 {
+      margin-bottom: 30px;
+    }
     footer {
       background: #222;
       color: #bbb;
@@ -35,9 +38,9 @@
   <header>Hands_sum</header>
   
   <main>
-    <h2>추천 상품</h2>
-    <!-- 여기에 Shopify 버튼 들어감 -->
-    <div id='product-component-1756120684570'></div>
+    <h2>상품 컬렉션</h2>
+    <!-- Shopify 컬렉션 버튼 삽입 -->
+    <div id='collection-component-1756122973312'></div>
   </main>
 
   <footer>
@@ -61,7 +64,7 @@
       var script = document.createElement('script');
       script.async = true;
       script.src = scriptURL;
-      (document.head || document.body).appendChild(script);
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
       script.onload = ShopifyBuyInit;
     }
     function ShopifyBuyInit() {
@@ -70,9 +73,9 @@
         storefrontAccessToken: '016a0b03ebabea5aa42ddef63d38f5bf',
       });
       ShopifyBuy.UI.onReady(client).then(function (ui) {
-        ui.createComponent('product', {
-          id: '8993093615852',
-          node: document.getElementById('product-component-1756120684570'),
+        ui.createComponent('collection', {
+          id: '455454687468',  // 컬렉션 ID
+          node: document.getElementById('collection-component-1756122973312'),
           moneyFormat: '%E2%82%A9%7B%7Bamount_no_decimals%7D%7D',
           options: {
             "product": {
@@ -81,11 +84,21 @@
                   "@media (min-width: 601px)": {
                     "max-width": "calc(25% - 20px)",
                     "margin-left": "20px",
-                    "margin-bottom": "50px"
+                    "margin-bottom": "50px",
+                    "width": "calc(25% - 20px)"
+                  },
+                  "img": {
+                    "height": "calc(100% - 15px)",
+                    "position": "absolute",
+                    "left": "0",
+                    "right": "0",
+                    "top": "0"
+                  },
+                  "imgWrapper": {
+                    "padding-top": "calc(75% + 15px)",
+                    "position": "relative",
+                    "height": "0"
                   }
-                },
-                "title": {
-                  "font-size": "17px"
                 },
                 "button": {
                   "font-family": "Montserrat, sans-serif",
@@ -96,14 +109,89 @@
                   ":focus": {
                     "background-color": "#000000"
                   },
-                  "border-radius": "40px",
-                  "padding-left": "61px",
-                  "padding-right": "61px"
+                  "border-radius": "40px"
                 }
               },
               "buttonDestination": "checkout",
               "text": {
-                "button": "구매하기"
+                "button": "Buy now"
+              },
+              "googleFonts": ["Montserrat"]
+            },
+            "productSet": {
+              "styles": {
+                "products": {
+                  "@media (min-width: 601px)": {
+                    "margin-left": "-20px"
+                  }
+                }
+              }
+            },
+            "modalProduct": {
+              "contents": {
+                "img": false,
+                "imgWithCarousel": true,
+                "button": false,
+                "buttonWithQuantity": true
+              },
+              "styles": {
+                "product": {
+                  "@media (min-width: 601px)": {
+                    "max-width": "100%",
+                    "margin-left": "0px",
+                    "margin-bottom": "0px"
+                  }
+                },
+                "button": {
+                  "font-family": "Montserrat, sans-serif",
+                  ":hover": {
+                    "background-color": "#000000"
+                  },
+                  "background-color": "#000000",
+                  ":focus": {
+                    "background-color": "#000000"
+                  },
+                  "border-radius": "40px"
+                }
+              },
+              "googleFonts": ["Montserrat"],
+              "text": {
+                "button": "Add to cart"
+              }
+            },
+            "option": {},
+            "cart": {
+              "styles": {
+                "button": {
+                  "font-family": "Montserrat, sans-serif",
+                  ":hover": {
+                    "background-color": "#000000"
+                  },
+                  "background-color": "#000000",
+                  ":focus": {
+                    "background-color": "#000000"
+                  },
+                  "border-radius": "40px"
+                }
+              },
+              "text": {
+                "total": "Subtotal",
+                "button": "Checkout"
+              },
+              "googleFonts": ["Montserrat"]
+            },
+            "toggle": {
+              "styles": {
+                "toggle": {
+                  "font-family": "Montserrat, sans-serif",
+                  "background-color": "#000000",
+                  ":hover": {
+                    "background-color": "#000000"
+                  },
+                  ":focus": {
+                    "background-color": "#000000"
+                  }
+                }
               },
               "googleFonts": ["Montserrat"]
             }
